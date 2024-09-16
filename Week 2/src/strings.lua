@@ -11,3 +11,14 @@ local stringLength = string.len(command); --Storing string length as value.
 print(string.sub(command,1, stringLength -1));
 
 --Exercise End
+
+--Exercise 3.0
+
+local directions = {"study", "?????","profit"}
+
+for index, action in ipairs(directions) do
+    print(string.format(index .. ". " .. directions[index]))
+end
+
+
+--Exercise 3.1
