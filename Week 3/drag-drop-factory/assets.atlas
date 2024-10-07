@@ -1,0 +1,10 @@
+images {
+  image: "/images/cursorImg.png"
+}
+images {
+  image: "/images/planet.png"
+}
+images {
+  image: "/images/spaceBackground.jpg"
+}
+extrude_borders: 2

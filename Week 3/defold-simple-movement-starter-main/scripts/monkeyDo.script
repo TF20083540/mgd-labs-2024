@@ -1,0 +1,20 @@
+--Thomas Farrell, 20083540
+
+function init(self)
+	self.direction = vmath.vector3(0,0,0)
+	self.speed = 100
+end
+
+function update(self, dt)
+	go.set_position(go.get_position() + self.direction * self.speed * dt)
+	self.direction = vmath.vector3(0,0,0) -- reset the direction to stop wandering.
+
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("input") then
+		local new_direction = message.direction
+		new_direction = new_direction * -1
+		self.direction = new_direction
+	end
+end

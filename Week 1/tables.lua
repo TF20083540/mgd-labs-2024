@@ -14,7 +14,7 @@ for key, value in pairs(fruitsByColour) do
     --    or (i == 3 and key == "strawberries"))
 
 
-    print(key .. " are typically " .. fruitsByColour[key])
+    print(key .. " are typically " .. value)
 
 end
 

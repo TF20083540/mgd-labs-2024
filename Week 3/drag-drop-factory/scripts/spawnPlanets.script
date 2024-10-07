@@ -1,0 +1,53 @@
+--[[
+=============================================================================================
+
+Lua Script File:  spawnPlanets.script
+
+Script Summary: This script generates a set of planets within the game world. As seen below, 
+within the init(self) function, two primary tasks are performed: 
+
+	(1) The width and height of the game world are determined as a basis for determining 
+	legitimate positioning for both x and y, and 
+
+	(2) A set of ten planet game objects are created, spawned at random locations 
+	within the screen.
+
+	=============================================================================================
+	--]]
+
+
+	-- ------------------------------------------------------------------------------------------
+	-- The init() function is executed when the createPlanetGO game object is 
+	-- initialized at game start
+	-- ------------------------------------------------------------------------------------------
+	function init(self)
+
+		-- Establish a Random Seed so that random numbers are different each time
+		math.randomseed(os.time())
+
+		-- Capture the game world dimensions from the game.project file
+		local gameWidth = tonumber(sys.get_config("display.width"))
+		local gameHeight = tonumber(sys.get_config("display.height"))
+
+		-- Echo the game world dimensions to the console
+		print("gameWidth: " .. tostring(gameWidth) .. "  gameHeight: " .. tostring(gameHeight))
+
+		-- Spawn ten Game Objects located at random locations within the game world
+		for i=1, 10 do
+
+			-- Set a Script Property which is the id number of the planet to be spawned
+			self.id = tostring(i)
+
+			-- Determine a random x and y position to place each Planet -- 100 pixels from the edge
+			local x1 = math.random(100, gameWidth-100)
+			local y1 = math.random(100, gameHeight-100)
+			local pos = vmath.vector3(x1, y1, 1)
+
+			-- Spawn a planet at the computed random position
+			factory.create("#factory", pos, nil, {}, 1)	
+
+			-- Echo to the console the id, x and y position of each planet as it's created
+			print("Spawning Planet: " .. self.id .. "  x1: " .. tostring(x1) .. "  y1: " .. tostring(y1))
+		end	
+	end
+	

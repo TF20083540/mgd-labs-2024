@@ -1,0 +1,41 @@
+go.property("speed", 200)
+
+local updateCount = 0
+local startTime = os.time();
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	go.set_position(vmath.vector3(250, 125, 1))
+	self.direction = vmath.vector3(0,0,0)
+end
+
+function update(self, dt)
+	go.set_position(go.get_position() + self.direction * self.speed * dt)
+	self.direction = vmath.vector3(0,0,0) -- reset the direction to stop wandering.
+
+	updateCount = updateCount+1
+	local currentTime = os.time();
+	local secondsSinceStart = os.difftime(currentTime, startTime);
+	local fps = updateCount / secondsSinceStart;
+	print("FPS: " .. fps);
+end
+
+function on_input(self,  action_id, action)
+	
+	if action_id == hash("up") then
+		self.direction.y = 1
+
+	elseif action_id == hash("down") then
+		self.direction.y = -1
+
+	elseif action_id == hash("right") then
+		self.direction.x = 1
+		
+	elseif action_id == hash("left") then
+		self.direction.x = -1
+		
+	end
+
+	msg.post("monkey", "input", {direction = vmath.vector3(self.direction)})
+	
+end	

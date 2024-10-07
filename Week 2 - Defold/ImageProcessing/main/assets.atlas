@@ -1,0 +1,44 @@
+images {
+  image: "/Images/character.png"
+}
+images {
+  image: "/Images/orangeBkgd.jpg"
+}
+images {
+  image: "/Images/wheel.png"
+}
+animations {
+  id: "Jump"
+  images {
+    image: "/Images/Jump__003.png"
+  }
+  images {
+    image: "/Images/Jump__005.png"
+  }
+  images {
+    image: "/Images/Jump__004.png"
+  }
+  images {
+    image: "/Images/Jump__008.png"
+  }
+  images {
+    image: "/Images/Jump__009.png"
+  }
+  images {
+    image: "/Images/Jump__000.png"
+  }
+  images {
+    image: "/Images/Jump__007.png"
+  }
+  images {
+    image: "/Images/Jump__002.png"
+  }
+  images {
+    image: "/Images/Jump__001.png"
+  }
+  images {
+    image: "/Images/Jump__006.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+extrude_borders: 2

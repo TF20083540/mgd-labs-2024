@@ -1,0 +1,24 @@
+--[[ 
+=============================================================================================
+
+Lua Script File:  planetGO.script
+
+Script Summary: This script provides the logic that will enable rotation of each of the 
+spawned wheels around the z-axis.
+
+(1)  Initialization of a Script Property (speed of rotation)
+(2)  Sets animation on a playback loop
+
+=============================================================================================
+--]]
+
+-- Set Script Properties - Unique to each Instance of the Planet Game Object
+go.property("speed", 4)
+
+-- ------------------------------------------------------------------------------------------
+-- The init() function is executed when the planet game object is initialized
+-- ------------------------------------------------------------------------------------------
+function init(self)
+	-- Rotate the planet around the z-axis on a loop - using the Script Property Speed
+	go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_LINEAR, 60/self.speed)
+end
